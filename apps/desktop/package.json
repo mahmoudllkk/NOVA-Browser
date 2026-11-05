@@ -1,0 +1,38 @@
+{
+  "name": "nova-desktop",
+  "version": "0.7.0",
+  "private": true,
+  "description": "NOVA Browser - Windows desktop app",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:renderer\" \"npm:dev:main\"",
+    "dev:renderer": "vite",
+    "dev:main": "tsc -p tsconfig.main.json && wait-on tcp:5173 && cross-env NODE_ENV=development electron .",
+    "build": "tsc -p tsconfig.main.json && vite build",
+    "start": "npm run build && electron .",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.main.json --noEmit && tsc -p tsconfig.renderer.json --noEmit",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tldts": "^6.1.50"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4",
+    "wait-on": "^8.0.1"
+  }
+}

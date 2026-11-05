@@ -1,0 +1,16 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+        working-directory: apps/desktop
+      - run: npm run typecheck
+        working-directory: apps/desktop
+      - run: npm test
+        working-directory: apps/desktop

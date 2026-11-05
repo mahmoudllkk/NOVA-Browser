@@ -1,0 +1,12 @@
+{
+  "name": "nova-browser",
+  "version": "0.7.0",
+  "private": true,
+  "scripts": {
+    "install:desktop": "npm --prefix apps/desktop install",
+    "dev": "npm --prefix apps/desktop run dev",
+    "start": "npm --prefix apps/desktop run start",
+    "test": "npm --prefix apps/desktop run test",
+    "typecheck": "npm --prefix apps/desktop run typecheck"
+  }
+}
